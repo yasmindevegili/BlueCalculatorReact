@@ -1,38 +1,99 @@
+body {
+  font-family: "Monaco", sans-serif;
+  background: hsla(180, 55%, 50%, 1);
+
+  background: radial-gradient(circle, hsla(180, 55%, 50%, 1) 0%, hsla(202, 66%, 67%, 1) 62%, hsla(210, 73%, 72%, 1) 100%);
+  
+  background: -moz-radial-gradient(circle, hsla(180, 55%, 50%, 1) 0%, hsla(202, 66%, 67%, 1) 62%, hsla(210, 73%, 72%, 1) 100%);
+  
+  background: -webkit-radial-gradient(circle, hsla(180, 55%, 50%, 1) 0%, hsla(202, 66%, 67%, 1) 62%, hsla(210, 73%, 72%, 1) 100%);
+  
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#39C4C4", endColorstr="#74BBE3", GradientType=1 );
+  
+}
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.calculator {
+  background-color: #fff;
+  width: 600;
+  padding: 40px;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.App-link {
-  color: #61dafb;
+.screen {
+  background-color: black;
+  width: 100%;
+  height: 120px;
+  border-radius: 10px;
+  color: #fff;
+  text-align: right;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.screen-content {
+  padding: 30px;
+  margin-bottom: 3px;
+  margin-right: 2px;
+  font-size: 70px;
+}
+
+.keyboard {
+  margin: 30px;
+}
+
+.row {
+  display: flex;
+}
+
+.btn,
+.btn-operations,
+.btn-equal,
+.btn-clean,
+.btn-visual {
+  margin: 5px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50px;
+  border: none;
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn {
+  background-color: #39C4C4;
+}
+
+.btn-clean {
+  background-color: #F0524C;
+}
+
+.btn-equal,
+.btn-operations {
+  background-color: #85B9EC;
+}
+
+.btn-visual {
+  background-color: rgb(247, 247, 156);
+  align-items: center;
+}
+
+.btn-visual img {
+  margin-top: 4px;
+}
+
+
+.btn:hover, 
+.btn-operations:hover,
+.btn-clean:hover,
+.btn-equal:hover,
+.btn-visual:hover {
+  opacity: 75%;
 }

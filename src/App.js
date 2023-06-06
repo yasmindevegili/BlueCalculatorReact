@@ -5,12 +5,16 @@ function App() {
   const [number, setNumber] = useState(0);
   const [previousNumber, setPreviousNumber] = useState(0);
   const [operation, setOperation] = useState();
+  const [equation, setEquation] = useState(0);
+  const [result, setResult] = useState(0);
 
   function SettingNumber(e) {
     const settingNumber = e.target.value;
     if (number === 0) {
+      setEquation(settingNumber);
       setNumber(settingNumber);
     } else {
+      setEquation(equation + settingNumber);
       setNumber(number + settingNumber);
     }
   }
@@ -18,42 +22,47 @@ function App() {
   function SettingOperation(e) {
     const settingOperation = e.target.value;
     setOperation(settingOperation);
+    setEquation(equation + settingOperation);
     setPreviousNumber(number);
     setNumber(0);
   }
 
   function Clean() {
-    return setNumber(0);
+    setEquation(0);
+    setNumber(0);
+    setResult(0);
   }
 
   function Percentage() {
-    return setNumber(parseFloat(number) / 100);
+    setEquation(parseFloat(number) / 100);
+    setNumber(parseFloat(number) / 100);
   }
 
   function ChangeSign() {
-    return setNumber(number * -1);
+    setEquation(number * -1);
+    setNumber(number * -1);
   }
 
   function Calculator() {
     switch (operation) {
       case "+":
-        setNumber(parseFloat(previousNumber) + parseFloat(number));
+        setResult(parseFloat(previousNumber) + parseFloat(number));
         break;
       case "-":
-        setNumber(parseFloat(previousNumber) - parseFloat(number));
+        setResult(parseFloat(previousNumber) - parseFloat(number));
         break;
       case "X":
-        setNumber(parseFloat(previousNumber) * parseFloat(number));
+        setResult(parseFloat(previousNumber) * parseFloat(number));
         break;
       case "/":
-        setNumber(
+        setResult(
           number === 0
             ? "Operação impossível"
             : parseFloat(previousNumber) / parseFloat(number)
         );
         break;
       default:
-        setNumber("Erro!");
+        setResult("Erro!");
     }
   }
 
@@ -62,7 +71,7 @@ function App() {
       <h1></h1>
       <div className="calculator">
         <div className="screen">
-          <div className="screen-content">{number}</div>
+          <div className="screen-content">{ result !== 0 ? result : equation}</div>
         </div>
         <div className="keyboard">
           <div className="row">
@@ -102,7 +111,7 @@ function App() {
               onClick={SettingOperation}
               value={"X"}
             >
-              X
+              x
             </button>
           </div>
           <div className="row">
